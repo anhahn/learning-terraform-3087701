@@ -18,7 +18,7 @@ data "aws_vpc" "default" {
   default = true
 }
 
-resource "aws_instance" "web" {
+resource "aws_instance" "blog" {
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type
 
@@ -30,7 +30,7 @@ resource "aws_instance" "web" {
 }
 
 resource "aws_security_group" "blog" {
-  name = "blog"
+  name        = "blog"
   description = "Allow http and https in. Allow all out."
 
   vpc_id      = data.aws_vpc.default
